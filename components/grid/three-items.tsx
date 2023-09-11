@@ -43,9 +43,11 @@ export async function ThreeItemGrid() {
     collection: 'stuffed-crust-pizza'
   });
 
-  if (!homepageItems[0] || !homepageItems[1] || !homepageItems[2]) return null;
+  if (!homepageItems[0] || !homepageItems[1] || !homepageItems[2]
+     || !homepageItems[3] || !homepageItems[4] || !homepageItems[5]
+    ) return null;
 
-  const [firstProduct, secondProduct, thirdProduct] = homepageItems;
+  const [firstProduct, secondProduct, thirdProduct, fourProduct] = homepageItems;
 
   return (
     <section className="mx-auto grid max-w-screen-2xl gap-4 px-4 pb-4 md:grid-cols-6 md:grid-rows-2">
