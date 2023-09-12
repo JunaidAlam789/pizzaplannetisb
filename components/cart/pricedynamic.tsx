@@ -1,14 +1,11 @@
 'use client';
 
-import { PlusIcon } from '@heroicons/react/24/outline';
-import clsx from 'clsx';
-import { addItem } from 'components/cart/actions';
-import LoadingDots from 'components/loading-dots';
+import Price from 'components/price';
 import { ProductVariant } from 'lib/shopify/types';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useTransition } from 'react';
 
-export function AddToCart({
+export function PriceDynamic({
   variants,
   availableForSale
 }: {
@@ -32,8 +29,8 @@ export function AddToCart({
     ? 'Please select options'
     : undefined;
 
-  return (
-    <button
+  return (<>
+   {/*  <button
       aria-label="Add item to cart"
       disabled={isPending || !availableForSale || !selectedVariantId}
       title={title}
@@ -64,8 +61,14 @@ export function AddToCart({
         {!isPending ? <PlusIcon className="h-5" /> : <LoadingDots className="mb-3 bg-white" />}
       </div>
       <span>{availableForSale ? 'Add To Cart' : 'Out Of Stock'}</span>
-    </button>
+    </button> */}
     
-  
+    <div className="mr-auto w-auto rounded-full bg-blue-600 p-2 text-sm text-white">
+          <Price
+            amount={variant? variant.price.amount: "0"}
+            currencyCode={variant? variant?.price.currencyCode: "PKR"}        
+          />
+     </div>     
+    </>
   );
 }
